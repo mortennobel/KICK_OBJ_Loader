@@ -7,6 +7,7 @@
 //
 
 #pragma once
+#include "ObjData.h"
 #include <iostream>
 #include <vector>
 #include <string>
@@ -20,5 +21,27 @@ namespace kick {
     struct ObjInterleavedData {
         std::vector<float> interleavedData;
         std::vector<ObjInterleavedIndex> indices;
+        
+        ObjInterleavedData(){}
+        
+        // Creates interleaved triangles
+        ObjInterleavedData(ObjData & objData, bool includeTextureCoordinates = true, bool includeNormals = true, int vertexPositionSize = 3, int texCoordinateSize = 2);
+        
+        bool includeTextureCoordinates = true;
+        bool includeNormals = true;
+        int vertexPositionSize = 3;
+        int texCoordinateSize = 2;
+        int vertexLength;
+        const int vertexPosOffset = 0;
+        int textureOffset = 0;
+        int normalsOffset = 0;
+        
+        int getVertexCount();
+        glm::vec4 vertex(int index);
+        void setVertex(int index, glm::vec4 value);
+        glm::vec3 textureCoordinate(int index);
+        void setTextureCoordinate(int index, glm::vec3 value);
+        glm::vec3 normal(int index);
+        void setNormal(int index, glm::vec3 value);
     };
 }

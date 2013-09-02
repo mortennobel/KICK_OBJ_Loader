@@ -45,17 +45,4 @@ namespace kick {
         
         return true;
     }
-    
-    std::vector<float> ObjData::getInterleavedVertexData(bool includeTextureCoords, bool includeNormals, int vertexPositionSize, int texCoordinateSize){
-        // approximate vectorSize
-        int vectorSize = vertexPositions.size() * vertexPositionSize;
-        if (includeTextureCoords){
-            vectorSize += vertexPositions.size() * texCoordinateSize;
-        }
-        if (includeNormals){
-            vectorSize += vertexPositions.size() * 3;
-        }
-        std::vector<float> res(vectorSize);
-        
-    }
 }
