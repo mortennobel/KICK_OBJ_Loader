@@ -123,7 +123,7 @@ namespace kick {
                 } else if (tokens[0] == "Ks"){
                     currentMat.specularColor = toVec3(tokens);
                 } else if (tokens[0] == "d"){
-                    currentMat.transparent = atoi(tokens[1].c_str());
+                    currentMat.transparent = atof(tokens[1].c_str());
                 } else if (tokens[0] == "illum"){
                     int illumMode = atoi(tokens[1].c_str());
                     currentMat.illuminationModes.push_back(static_cast<ObjIlluminationMode>(illumMode));
